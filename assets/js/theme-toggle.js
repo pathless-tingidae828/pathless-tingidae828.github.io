@@ -4,7 +4,7 @@
   function preferredTheme() {
     var stored = localStorage.getItem("theme");
     if (stored === "dark" || stored === "light") return stored;
-    return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    return "light";
   }
 
   function applyTheme(theme, persist) {
@@ -41,10 +41,6 @@
         event.preventDefault();
         toggle();
       }
-    });
-
-    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", function (event) {
-      if (!localStorage.getItem("theme")) applyTheme(event.matches ? "dark" : "light", false);
     });
   });
 }());

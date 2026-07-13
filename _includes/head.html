@@ -12,9 +12,12 @@
 
 <script>
   try {
-    const savedTheme = localStorage.getItem("theme");
-    const useDark = savedTheme === "dark" || (!savedTheme && window.matchMedia("(prefers-color-scheme: dark)").matches);
-    if (useDark) document.documentElement.setAttribute("data-theme", "dark");
+    let savedTheme = localStorage.getItem("theme");
+    if (savedTheme !== "dark" && savedTheme !== "light") {
+      savedTheme = "light";
+      localStorage.setItem("theme", savedTheme);
+    }
+    if (savedTheme === "dark") document.documentElement.setAttribute("data-theme", "dark");
   } catch (error) {}
 </script>
 
